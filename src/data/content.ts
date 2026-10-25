@@ -95,6 +95,17 @@ export type Certification = {
 
 export const certifications: Certification[] = [
   {
+    title: 'Sertifikasi Profesi BNSP: Programmer',
+    issuer: 'BNSP — LSP Politeknik Caltex Riau',
+    type: 'Professional Certification (BNSP)',
+    credentialId: 'No. 005/SK-LSP/PCR/2026',
+    date: 'August 2026',
+    image: '/certs/thumbs/SK_Penetapan_Uji_Kompetensi.png',
+    file: '/certs/SK_Penetapan_Uji_Kompetensi_Programmer_BNSP.pdf',
+    description: 'Official national competency decree from Badan Nasional Sertifikasi Profesi (BNSP) through LSP PCR awarding KOMPETEN status for the professional Programmer scheme.',
+    url: '/certs/SK_Penetapan_Uji_Kompetensi_Programmer_BNSP.pdf',
+  },
+  {
     title: 'MikroTik Certified Network Associate (MTCNA)',
     issuer: 'MikroTik',
     type: 'Professional Certification',
