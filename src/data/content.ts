@@ -1,18 +1,20 @@
 // ============================================================
 //  All portfolio content lives here. Update this file only.
-//  TODO(owner): replace contact values marked TODO with real links.
 // ============================================================
 
 export const site = {
   name: 'Zikri Haykal',
+  fullName: 'Muhammad Zikri Haykal',
   role: 'Software Developer',
+  headline: 'Web & Mobile Developer | Backend Systems | Exploring Machine Learning',
   openToWork: true, // set false to hide the availability badge
-  email: 'zikrihaykal@example.com', // TODO: real email
-  linkedin: 'https://www.linkedin.com/in/zikrihaykal', // TODO: verify
+  email: 'zikrihaikalpku01@gmail.com',
+  phone: '+62 822-6067-8461',
+  linkedin: 'https://www.linkedin.com/in/muhammad-zikri-haykal',
   github: 'https://github.com/zikri-haykal',
   cv: '/cv-zikri-haykal.pdf', // TODO: put the PDF in /public
   photo: '/photo.jpg', // TODO: put your portrait (4:5 ratio) at /public/photo.jpg
-  location: 'Pekanbaru, Riau — Indonesia',
+  location: 'Pekanbaru, Riau, Indonesia',
 };
 
 export const stats = [
@@ -35,14 +37,14 @@ export type Experience = {
 export const experiences: Experience[] = [
   {
     org: 'BRIN',
-    full: 'Badan Riset dan Inovasi Nasional',
-    role: 'Software Developer Intern',
-    period: 'Internship',
+    full: 'Badan Riset dan Inovasi Nasional RI',
+    role: 'Software Engineer (Intern)',
+    period: 'Aug 2025 – Dec 2025',
     points: [
-      'Reengineered the SpaceMap information website.',
-      'Migrated the codebase from Bootstrap 4 to Bootstrap 5.',
-      'Built Landsat Scene Downloader, a Python & Tkinter desktop app.',
-      'Integrated the USGS M2M API and collaborated within the dev team.',
+      'Reengineered the SPACeMAP website, transitioning visual identity and web architecture from LAPAN to BRIN corporate standards.',
+      'Modernized UI components and responsiveness through Bootstrap 4 to Bootstrap 5 migration.',
+      'Developed the Landsat Collection Automation GUI desktop app (Python & Tkinter) with USGS M2M API integration.',
+      'Streamlined satellite remote sensing data retrieval, replacing manual EarthExplorer workflows.',
     ],
     projects: ['spacemap', 'landsat-downloader'],
     gallery: [
@@ -54,13 +56,13 @@ export const experiences: Experience[] = [
   },
   {
     org: 'PTPN',
-    full: 'PT Perkebunan Nusantara',
-    role: 'Software Development & IT Support Intern',
-    period: 'Internship',
+    full: 'PT Perkebunan Nusantara IV (Persero)',
+    role: 'Software Engineer (Intern)',
+    period: 'Feb 2026 – Jun 2026',
     points: [
-      'Developed the Meeting Calculator feature for the Online Accommodation system.',
-      'Contributed to the backend of a soil fertility monitoring website.',
-      'Handled 5+ IT Support tickets per day.',
+      'Developed the Meeting Calculator interactive feature for the Online Accommodation platform for automated cost estimation and approval.',
+      'Engineered server-side architecture, database structures, and processing logic for the Soil Fertility Monitoring website.',
+      'Delivered daily operational IT Support resolving 5+ hardware, software, and networking tickets.',
     ],
     projects: ['akomodasi-ptpn', 'soil-monitoring'],
     gallery: [
@@ -398,5 +400,43 @@ export const projects: Project[] = [
     challenges: [],
     outcomes: ['Backend contributions integrated into the team project.'],
     screenshots: [],
+  },
+  {
+    slug: 'mahad-abu-darda',
+    index: '07',
+    title: "Website Ma'had Abu Ad Darda'",
+    category: 'Web Development · Community Service (PKM)',
+    summary:
+      'Official school website and online admission system developed during PKM Politeknik Caltex Riau, registered under Kemenkumham RI Copyright (HKI No. 000792817).',
+    role: 'Backend Developer',
+    stack: ['PHP', 'Laravel', 'MySQL', 'Bootstrap', 'RBAC'],
+    context: 'PKM Politeknik Caltex Riau · Hak Cipta Kemenkumham',
+    accent: '#2563EB',
+    overview:
+      "A comprehensive official school web portal and online student admission platform built for Sekolah Ma'had Abu Ad Darda' to digitize academic information, announcements, and registration.",
+    problem:
+      'The institution required a centralized digital platform to manage public school information, announcements, and an online registration workflow for prospective students.',
+    contribution: [
+      'Designed efficient relational database schemas for school data, announcements, users, and online student admissions.',
+      'Developed dynamic CRUD operations for dynamic content management including news, admissions, and student records.',
+      'Implemented Role-Based Access Control (RBAC) to enforce strict permission boundaries between admins, teachers, and public users.',
+      'Engineered User Profile Management supporting profile editing and account management.',
+    ],
+    implementation: [
+      'Backend server-side architecture in PHP / Laravel with structured MySQL database relations.',
+      'Role-based middleware and permission gating for distinct user privileges.',
+      'Dynamic administrative dashboard for streamlined content updates.',
+    ],
+    challenges: [
+      {
+        challenge: 'Enforcing granular security and privacy across multiple administrative and user roles.',
+        solution: 'Implemented structured Role-Based Access Control (RBAC) ensuring administrative features remain isolated and authenticated.',
+      },
+    ],
+    outcomes: [
+      "Successfully deployed and utilized for Sekolah Ma'had Abu Ad Darda' operations.",
+      'Officially registered with Hak Cipta Program Komputer from Kemenkumham RI (No. 000792817).',
+    ],
+    screenshots: ['/certs/thumbs/HakCipta-Mahad.png'],
   },
 ];
