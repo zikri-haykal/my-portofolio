@@ -12,8 +12,8 @@ export const site = {
   phone: '+62 822-6067-8461',
   linkedin: 'https://www.linkedin.com/in/muhammad-zikri-haykal',
   github: 'https://github.com/zikri-haykal',
-  cv: '/cv-zikri-haykal.pdf', // TODO: put the PDF in /public
-  photo: '/photo.jpg', // TODO: put your portrait (4:5 ratio) at /public/photo.jpg
+  cv: '/myself/Profile.pdf', // LinkedIn exported profile / CV
+  photo: '/photo.jpg',
   location: 'Pekanbaru, Riau, Indonesia',
 };
 
@@ -30,7 +30,7 @@ export type Experience = {
   period: string;
   points: string[];
   projects: string[];
-  /** Documentation photos — put files in /public/experience/<org>/ */
+  /** Real deliverable assets */
   gallery: { src: string; caption: string }[];
 };
 
@@ -48,10 +48,8 @@ export const experiences: Experience[] = [
     ],
     projects: ['spacemap', 'landsat-downloader'],
     gallery: [
-      // TODO: replace with your real files & captions
-      { src: '/experience/brin/1.jpg', caption: 'Team at BRIN' },
-      { src: '/experience/brin/2.jpg', caption: 'SpaceMap reengineering session' },
-      { src: '/experience/brin/3.jpg', caption: 'Landsat Scene Downloader demo' },
+      { src: '/projects/spacemap.png', caption: 'SPACeMAP — BRIN satellite remote sensing portal reengineering' },
+      { src: '/projects/guilandsat.png', caption: 'Landsat Scene Downloader — Tkinter GUI desktop automation' },
     ],
   },
   {
@@ -66,9 +64,7 @@ export const experiences: Experience[] = [
     ],
     projects: ['akomodasi-ptpn', 'soil-monitoring'],
     gallery: [
-      { src: '/experience/ptpn/1.jpg', caption: 'Team at PTPN' },
-      { src: '/experience/ptpn/2.jpg', caption: 'Meeting Calculator feature review' },
-      { src: '/experience/ptpn/3.jpg', caption: 'IT Support duty' },
+      { src: '/projects/akomodasi-rapat.png', caption: 'Online Accommodation System — Meeting Calculator module' },
     ],
   },
 ];
@@ -261,7 +257,7 @@ export const projects: Project[] = [
       'User Acceptance Testing (UAT) conducted with target users.',
       'Usability score of 86.68%.',
     ],
-    screenshots: [],
+    screenshots: ['/projects/rafalmer.png'],
   },
   {
     slug: 'sweet-sensation',
@@ -292,7 +288,7 @@ export const projects: Project[] = [
       },
     ],
     outcomes: ['Working prototype covering prediction and quiz features.'],
-    screenshots: [],
+    screenshots: ['/projects/sweet3.png', '/projects/sweet1.png', '/projects/sweet2.png'],
   },
   {
     slug: 'spacemap',
@@ -323,7 +319,7 @@ export const projects: Project[] = [
       },
     ],
     outcomes: ['Website running on Bootstrap 5 with an updated interface.'],
-    screenshots: [],
+    screenshots: ['/projects/spacemap.png'],
   },
   {
     slug: 'landsat-downloader',
@@ -354,7 +350,7 @@ export const projects: Project[] = [
       },
     ],
     outcomes: ['Working desktop app used to search and download Landsat scenes.'],
-    screenshots: [],
+    screenshots: ['/projects/guilandsat.png'],
   },
   {
     slug: 'akomodasi-ptpn',
@@ -381,7 +377,7 @@ export const projects: Project[] = [
       },
     ],
     outcomes: ['Meeting Calculator feature delivered into the system.'],
-    screenshots: [],
+    screenshots: ['/projects/akomodasi-rapat.png'],
   },
   {
     slug: 'soil-monitoring',
@@ -390,7 +386,7 @@ export const projects: Project[] = [
     category: 'Backend Development · PTPN',
     summary: 'Contributed to the backend of a website supporting soil fertility monitoring functionality.',
     role: 'Backend Developer (Intern)',
-    stack: ['Backend web development'], // TODO: add actual framework & database
+    stack: ['PHP', 'MySQL', 'Backend API', 'Relational Database'],
     context: 'PTPN internship',
     accent: '#4D7C0F',
     overview: 'A web platform to support monitoring of soil fertility data in plantation areas.',
@@ -437,6 +433,6 @@ export const projects: Project[] = [
       "Successfully deployed and utilized for Sekolah Ma'had Abu Ad Darda' operations.",
       'Officially registered with Hak Cipta Program Komputer from Kemenkumham RI (No. 000792817).',
     ],
-    screenshots: ['/certs/thumbs/HakCipta-Mahad.png'],
+    screenshots: ['/projects/mahadabudarda.jpeg', '/certs/thumbs/HakCipta-Mahad.png'],
   },
 ];

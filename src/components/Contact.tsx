@@ -34,11 +34,13 @@ export function Contact() {
   );
 }
 
+const currentYear = new Date().getFullYear();
+
 export function Footer() {
   return (
     <footer className="footer">
       <div className="wrap footer-inner">
-        <span>© {new Date().getFullYear()} {site.name}</span>
+        <span>© {currentYear} {site.name}</span>
         <nav aria-label="Footer">
           <Link to="/#projects">Projects</Link>
           <a href={site.github} target="_blank" rel="noreferrer">GitHub</a>

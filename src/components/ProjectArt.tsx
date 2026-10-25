@@ -1,38 +1,103 @@
 import type { Project } from '../data/content';
+import { Database, Server } from 'lucide-react';
 
-/** Abstract device cover used until real screenshots are added to project.screenshots. */
-export function ProjectArt({ project }: { project: Project }) {
-  const bg = `linear-gradient(140deg, ${project.accent}22, ${project.accent}08 60%, transparent)`;
-  const shot = project.screenshots[0];
-  if (shot) {
+interface ProjectArtProps {
+  project: Project;
+  priority?: boolean;
+}
+
+export function ProjectArt({ project, priority = false }: ProjectArtProps) {
+  const isMobile = project.stack.includes('Android') || project.category.includes('Android');
+  const shots = project.screenshots;
+  const primaryShot = shots[0];
+
+  // Mobile App Presentation (Sweet Sensation)
+  if (isMobile && primaryShot) {
+    const secondaryShot = shots[1];
+    const tertiaryShot = shots[2];
+
     return (
-      <div className="art">
-        <img src={shot} alt={`${project.title} screenshot`} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+      <div className="project-art project-art--mobile" aria-label={`${project.title} mobile application preview`}>
+        <div className="mobile-stage">
+          {secondaryShot && (
+            <div className="mobile-screen-flank mobile-screen-flank--left" aria-hidden="true">
+              <img
+                src={secondaryShot}
+                alt=""
+                loading={priority ? 'eager' : 'lazy'}
+                className="mobile-img"
+              />
+            </div>
+          )}
+
+          <div className="mobile-screen-hero">
+            <img
+              src={primaryShot}
+              alt={`${project.title} Android application interface`}
+              loading={priority ? 'eager' : 'lazy'}
+              className="mobile-img"
+            />
+          </div>
+
+          {tertiaryShot && (
+            <div className="mobile-screen-flank mobile-screen-flank--right" aria-hidden="true">
+              <img
+                src={tertiaryShot}
+                alt=""
+                loading={priority ? 'eager' : 'lazy'}
+                className="mobile-img"
+              />
+            </div>
+          )}
+        </div>
       </div>
     );
   }
-  const mobile = project.stack.includes('Android');
+
+  // Desktop / Web Application Presentation (Real screenshot)
+  if (primaryShot) {
+    return (
+      <div className="project-art project-art--desktop">
+        <img
+          src={primaryShot}
+          alt={`${project.title} system interface`}
+          loading={priority ? 'eager' : 'lazy'}
+          className="desktop-img"
+        />
+        <div className="art-scrim" />
+      </div>
+    );
+  }
+
+  // Architectural / Technical presentation for internal backend systems (Soil Monitoring)
   return (
-    <div className="art" style={{ background: bg }} aria-hidden="true">
-      {mobile ? (
-        <div className="phone">
-          <div className="blk hero-blk" style={{ background: project.accent }}>{project.title}</div>
-          <div className="blk" />
-          <div className="blk" />
-        </div>
-      ) : (
-        <div className="browser">
-          <div className="browser-bar">
-            <i /><i /><i />
-            <span>{project.slug}</span>
+    <div className="project-art project-art--backend" aria-label={`${project.title} technical architecture overview`}>
+      <div className="backend-card-inner">
+        <div className="backend-header">
+          <div className="backend-badge">
+            <Server size={13} />
+            <span>Backend Architecture</span>
           </div>
-          <div className="browser-body">
-            <div className="blk hero-blk" style={{ background: project.accent }}>{project.title}</div>
-            <div className="blk" />
-            <div className="blk" />
+          <span className="mono">{project.context ?? 'Internal Service'}</span>
+        </div>
+
+        <div className="backend-body">
+          <div className="backend-icon-wrap">
+            <Database size={28} />
+          </div>
+          <div className="backend-title">{project.title}</div>
+          <p className="backend-sub">Data ingestion endpoints, relational schema design &amp; monitoring logic</p>
+          <div className="backend-tech-row">
+            {project.stack.map((t) => (
+              <span key={t} className="backend-tech-pill">{t}</span>
+            ))}
           </div>
         </div>
-      )}
+
+        <div className="backend-footer">
+          <span className="mono">PT Perkebunan Nusantara IV · Confidential Internal Platform</span>
+        </div>
+      </div>
     </div>
   );
 }
