@@ -218,21 +218,35 @@ function Skills() {
         </Reveal>
         <div className="certs">
           {certifications.map((c, i) => (
-            <Reveal key={c.title} delay={i * 0.06}>
+            <Reveal key={c.title} delay={i * 0.05}>
               <div className="cert" style={{ height: '100%' }}>
-                <div className="cert-img">
+                <a
+                  href={c.file || c.url || '#'}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="cert-img"
+                  tabIndex={c.file || c.url ? 0 : -1}
+                  aria-label={`View ${c.title} certificate`}
+                >
                   <SmartImage
                     src={c.image}
                     alt={`${c.title} certificate`}
                     fallback={<><Award size={28} /><span className="mono">{c.issuer}</span></>}
                   />
+                </a>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: '8px' }}>
+                  <span className="mono">{c.type || 'Certificate'}</span>
+                  {c.date && <span className="mono" style={{ fontSize: '11px' }}>{c.date}</span>}
                 </div>
-                <span className="mono">Course certificate</span>
                 <h4>{c.title}</h4>
                 <p className="cert-desc">{c.description}</p>
                 <div className="cert-foot">
-                  <span>{c.issuer}</span>
-                  {c.url && <a href={c.url} target="_blank" rel="noreferrer" className="ulink">Credential <ArrowUpRight size={13} /></a>}
+                  <span>{c.issuer} {c.credentialId && `· ${c.credentialId}`}</span>
+                  {(c.file || c.url) && (
+                    <a href={c.file || c.url} target="_blank" rel="noreferrer" className="ulink">
+                      View Document <ArrowUpRight size={13} />
+                    </a>
+                  )}
                 </div>
               </div>
             </Reveal>

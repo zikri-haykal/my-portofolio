@@ -81,27 +81,83 @@ export const skills: { group: string; items: string[]; learning?: boolean }[] = 
   { group: 'Data & AI', items: ['Machine Learning', 'Deep Learning', 'Data Analytics'], learning: true },
 ];
 
-export const certifications = [
+export type Certification = {
+  title: string;
+  issuer: string;
+  type?: string;
+  credentialId?: string;
+  date?: string;
+  image: string;
+  file?: string;
+  description: string;
+  url?: string;
+};
+
+export const certifications: Certification[] = [
   {
-    title: 'Introduction to Networks',
-    issuer: 'Cisco Networking Academy',
-    image: '/certs/cisco-itn.jpg', // TODO: add certificate image to /public/certs
-    description: 'Network architecture, IP addressing (IPv4/IPv6), Ethernet fundamentals and basic router/switch configuration.',
-    url: '',
+    title: 'MikroTik Certified Network Associate (MTCNA)',
+    issuer: 'MikroTik',
+    type: 'Professional Certification',
+    credentialId: '2407NA9067',
+    date: 'July 2024',
+    image: '/certs/thumbs/MTCNA.png',
+    file: '/certs/MTCNA.pdf',
+    description: 'Official international networking certification covering MikroTik RouterOS architecture, routing protocols, firewall filtering & NAT, bridging, wireless, bandwidth management, and troubleshooting.',
+    url: 'https://mikrotik.com/certificate/2407NA9067',
   },
   {
-    title: 'Switching, Routing, and Wireless Essentials',
-    issuer: 'Cisco Networking Academy',
-    image: '/certs/cisco-srwe.jpg',
-    description: 'VLANs, inter-VLAN routing, STP, EtherChannel, DHCP, static routing and WLAN configuration.',
-    url: '',
+    title: 'Ethical Hacking Essentials (EHE)',
+    issuer: 'EC-Council',
+    type: 'Certificate of Achievement',
+    credentialId: '344440',
+    date: 'July 2024',
+    image: '/certs/EHE-Eccouncil.png',
+    file: '/certs/EHE-Eccouncil.png',
+    description: 'Information security and ethical hacking fundamentals, vulnerability assessment, penetration testing concepts, malware threats, and web application security countermeasures.',
+    url: '/certs/EHE-Eccouncil.png',
+  },
+  {
+    title: 'Network Defense Essentials (NDE)',
+    issuer: 'EC-Council',
+    type: 'Certificate of Achievement',
+    credentialId: '344443',
+    date: 'July 2024',
+    image: '/certs/NDE-Eccouncil.png',
+    file: '/certs/NDE-Eccouncil.png',
+    description: 'Comprehensive network security controls, defensive protocols, stateful firewalls, intrusion detection & prevention systems (IDS/IPS), VPNs, and defense-in-depth strategies.',
+    url: '/certs/NDE-Eccouncil.png',
   },
   {
     title: 'Cybersecurity Essentials',
     issuer: 'Cisco Networking Academy',
-    image: '/certs/cisco-cyber.jpg',
-    description: 'Security principles, common threats and attacks, cryptography basics and protecting networks and data.',
-    url: '',
+    type: 'Course Certificate',
+    date: 'July 2024',
+    image: '/certs/thumbs/Cybersecurity_Essentials_certificate_zikri22ti-mahasiswa-pcr-ac-id_74a8db07-c79d-451e-8e1f-7de90d2fc576.png',
+    file: '/certs/Cybersecurity_Essentials_certificate_zikri22ti-mahasiswa-pcr-ac-id_74a8db07-c79d-451e-8e1f-7de90d2fc576.pdf',
+    description: 'Tactics, techniques, and procedures used by cyber criminals, cryptography fundamentals, data confidentiality and integrity, and network infrastructure defense.',
+    url: '/certs/Cybersecurity_Essentials_certificate_zikri22ti-mahasiswa-pcr-ac-id_74a8db07-c79d-451e-8e1f-7de90d2fc576.pdf',
+  },
+  {
+    title: "Hak Cipta: Website Ma'had Abu Ad Darda'",
+    issuer: 'Kemenkumham RI',
+    type: 'Intellectual Property (HKI)',
+    credentialId: 'No. 000792817',
+    date: 'November 2024',
+    image: '/certs/thumbs/HakCipta-Mahad.png',
+    file: '/certs/HakCipta-Mahad.pdf',
+    description: "Official computer program copyright registration granted by Direktorat Jenderal Kekayaan Intelektual, Kementerian Hukum dan HAM RI for development of Website Ma'had Abu Ad Darda'.",
+    url: '/certs/HakCipta-Mahad.pdf',
+  },
+  {
+    title: 'TOEIC Prediction Test',
+    issuer: 'Language Training Institution',
+    type: 'Language Proficiency',
+    credentialId: 'Score: 755',
+    date: 'Listening: 415 · Reading: 340',
+    image: '/certs/Toeic_Prediction.jpeg',
+    file: '/certs/Toeic_Prediction.jpeg',
+    description: 'International communication English test demonstrating high working proficiency with a total score of 755 (Listening: 415, Reading: 340).',
+    url: '/certs/Toeic_Prediction.jpeg',
   },
 ];
 
