@@ -1,68 +1,18 @@
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight, ArrowRight, Award } from 'lucide-react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SmartImage } from '../components/SmartImage';
 import { Gallery } from '../components/Gallery';
-import { site, stats, projects, experiences, skills, certifications } from '../data/content';
+import { projects, experiences, skills, certifications } from '../data/content';
 import { Reveal } from '../components/Reveal';
 import { ProjectArt } from '../components/ProjectArt';
 import { Contact } from '../components/Contact';
+import { CinematicHero } from '../components/CinematicHero';
 import type { Project } from '../data/content';
 
-function Hero() {
-  return (
-    <section className="hero" aria-labelledby="hero-title">
-      <div className="wrap">
-        <div className="hero-top">
-          <span className="mono">Portfolio / 2026 — {site.role}</span>
-          {site.openToWork && (
-            <span className="badge"><span className="pulse" /> Open to software opportunities</span>
-          )}
-        </div>
-        <div className="hero-main">
-          <div>
-            <h1 id="hero-title">Engineering solid web systems <em>&amp; practical software.</em></h1>
-            <Reveal delay={0.1}>
-              <p className="hero-lead" style={{ marginTop: 'clamp(24px,3vw,36px)' }}>
-                I’m <strong>{site.fullName}</strong>, an Informatics Engineering graduate from <strong>Politeknik Caltex Riau</strong> (GPA 3.70) with practical engineering experience at <strong>BRIN</strong> and <strong>PTPN IV</strong>.
-              </p>
-            </Reveal>
-            <Reveal delay={0.15} className="hero-cta">
-              <a href="#projects" className="btn btn-primary" id="hero-projects">Explore Projects <ArrowUpRight size={17} /></a>
-              <a href="#contact" className="btn btn-ghost" id="hero-contact">Contact Me</a>
-            </Reveal>
-          </div>
-          <Reveal delay={0.1}>
-            <figure className="portrait">
-              <SmartImage
-                src={site.photo}
-                alt={`Portrait of ${site.name}`}
-                className="portrait-img"
-                fallback={<span className="portrait-initials">ZH</span>}
-              />
-              <figcaption>
-                <span>{site.name}</span>
-                <span className="mono">{site.location}</span>
-              </figcaption>
-            </figure>
-          </Reveal>
-        </div>
-        <Reveal delay={0.2}>
-          <dl className="stats">
-            {stats.map((s) => (
-              <div className="stat" key={s.label}>
-                <dt className="stat-value">{s.value}</dt>
-                <dd style={{ margin: 0 }}>
-                  <div className="stat-label">{s.label}</div>
-                  <div className="stat-note">{s.note}</div>
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
+gsap.registerPlugin(ScrollTrigger);
 
 function About() {
   return (
@@ -255,14 +205,148 @@ function Skills() {
 }
 
 export default function Home() {
+  const homeRef = useRef<HTMLDivElement>(null);
+  const progressBarRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // 1. Hairline Top Scroll Progress Indicator
+      if (progressBarRef.current) {
+        gsap.to(progressBarRef.current, {
+          scaleX: 1,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: document.body,
+            start: 'top top',
+            end: 'bottom bottom',
+            scrub: 0.15,
+          },
+        });
+      }
+
+      // 2. Section Head Stagger & Slide Up on Scroll
+      gsap.utils.toArray<HTMLElement>('.section-head').forEach((head) => {
+        gsap.fromTo(
+          head,
+          { opacity: 0, y: 32 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.75,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: head,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse',
+            },
+          }
+        );
+      });
+
+      // 3. Project Cards Lift & Image Parallax on Scroll
+      gsap.utils.toArray<HTMLElement>('.pcard').forEach((card, i) => {
+        gsap.fromTo(
+          card,
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            delay: (i % 2) * 0.12,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 88%',
+            },
+          }
+        );
+
+        const img = card.querySelector('.pcard-media img');
+        if (img) {
+          gsap.fromTo(
+            img,
+            { scale: 1.08 },
+            {
+              scale: 1,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: card,
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: 1.2,
+              },
+            }
+          );
+        }
+      });
+
+      // 4. Timeline Milestones Sequential Stagger
+      gsap.utils.toArray<HTMLElement>('.timeline > li').forEach((item, idx) => {
+        gsap.fromTo(
+          item,
+          { opacity: 0, x: -20 },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.65,
+            delay: idx * 0.1,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: item,
+              start: 'top 86%',
+            },
+          }
+        );
+      });
+
+      // 5. Certification Cards Entrance
+      gsap.utils.toArray<HTMLElement>('.certs .cert').forEach((cert, idx) => {
+        gsap.fromTo(
+          cert,
+          { opacity: 0, y: 28 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            delay: (idx % 3) * 0.08,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: cert,
+              start: 'top 90%',
+            },
+          }
+        );
+      });
+    }, homeRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <>
-      <Hero />
+    <div ref={homeRef}>
+      {/* Sleek Hairline Scroll Progress Bar at the very top */}
+      <div
+        ref={progressBarRef}
+        aria-hidden="true"
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: '2.5px',
+          background: 'linear-gradient(90deg, #1b6360, #3aa39f, #4ade80)',
+          transformOrigin: '0% 50%',
+          transform: 'scaleX(0)',
+          zIndex: 9999,
+          pointerEvents: 'none',
+        }}
+      />
+      <CinematicHero />
       <About />
       <Experience />
       <Projects />
       <Skills />
       <Contact />
-    </>
+    </div>
   );
 }

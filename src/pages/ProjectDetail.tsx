@@ -15,6 +15,9 @@ const assetCaptions: Record<string, string> = {
   '/projects/akomodasi-rapat.png': 'Online Accommodation System — Meeting Calculator & Cost Estimation Form',
   '/projects/mahadabudarda.jpeg': "Official School Web Portal — Sekolah Ma'had Abu Ad Darda'",
   '/certs/thumbs/HakCipta-Mahad.png': 'Surat Pencatatan Hak Cipta Kemenkumham RI (No. 000792817)',
+  '/documentation/brin-docs-2.webp': 'BRIN — Presentation & Review Meeting for SPACeMAP Portal Reengineering',
+  '/documentation/brin-docs.webp': 'BRIN — Software Engineering Internship Team at BRIN Headquarters',
+  '/documentation/ptpn-documentation.webp': 'PTPN IV — Demonstration & Deployment of Soil Fertility Monitoring Platform',
 };
 
 export default function ProjectDetail() {

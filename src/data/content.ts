@@ -13,7 +13,7 @@ export const site = {
   linkedin: 'https://www.linkedin.com/in/muhammad-zikri-haykal',
   github: 'https://github.com/zikri-haykal',
   cv: '/myself/Profile.pdf', // LinkedIn exported profile / CV
-  photo: '/photo.jpg',
+  photo: '/myself/myself.webp',
   location: 'Pekanbaru, Riau, Indonesia',
 };
 
@@ -50,6 +50,8 @@ export const experiences: Experience[] = [
     gallery: [
       { src: '/projects/spacemap.png', caption: 'SPACeMAP — BRIN satellite remote sensing portal reengineering' },
       { src: '/projects/guilandsat.png', caption: 'Landsat Scene Downloader — Tkinter GUI desktop automation' },
+      { src: '/documentation/brin-docs-2.webp', caption: 'BRIN — Presentation & review meeting of the SPACeMAP portal reengineering' },
+      { src: '/documentation/brin-docs.webp', caption: 'BRIN — Software engineering internship team at BRIN headquarters' },
     ],
   },
   {
@@ -65,6 +67,8 @@ export const experiences: Experience[] = [
     projects: ['akomodasi-ptpn', 'soil-monitoring'],
     gallery: [
       { src: '/projects/akomodasi-rapat.png', caption: 'Online Accommodation System — Meeting Calculator module' },
+      { src: '/documentation/ptpn-documentation.webp', caption: 'PTPN IV — Demonstration and deployment of the Soil Fertility Monitoring platform' },
+      { src: '/documentation/Sertifikat_Magang_PTPN_thumb.png', caption: 'PTPN IV — Official Certificate of Completion (Magang Berdampak, Predicate: Sangat Baik)' },
     ],
   },
 ];
@@ -102,6 +106,17 @@ export const certifications: Certification[] = [
     file: '/certs/SK_Penetapan_Uji_Kompetensi_Programmer_BNSP.pdf',
     description: 'Official national competency decree from Badan Nasional Sertifikasi Profesi (BNSP) through LSP PCR awarding KOMPETEN status for the professional Programmer scheme.',
     url: '/certs/SK_Penetapan_Uji_Kompetensi_Programmer_BNSP.pdf',
+  },
+  {
+    title: 'Sertifikat Magang Berdampak: IT & Software Engineering',
+    issuer: 'PT Perkebunan Nusantara IV (Persero) Regional III',
+    type: 'Internship Certification',
+    credentialId: 'No. 3SDM/EX-12/I/2026',
+    date: 'July 2026',
+    image: '/documentation/Sertifikat_Magang_PTPN_thumb.png',
+    file: '/documentation/Sertifikat Magang PTPN.pdf',
+    description: 'Official completion certificate for the Magang Berdampak program at PT Perkebunan Nusantara IV Regional III, awarded with predicate "Sangat Baik" for enterprise software engineering and IT support contributions.',
+    url: '/documentation/Sertifikat Magang PTPN.pdf',
   },
   {
     title: 'MikroTik Certified Network Associate (MTCNA)',
@@ -319,7 +334,7 @@ export const projects: Project[] = [
       },
     ],
     outcomes: ['Website running on Bootstrap 5 with an updated interface.'],
-    screenshots: ['/projects/spacemap.png'],
+    screenshots: ['/projects/spacemap.png', '/documentation/brin-docs-2.webp', '/documentation/brin-docs.webp'],
   },
   {
     slug: 'landsat-downloader',
@@ -395,7 +410,7 @@ export const projects: Project[] = [
     implementation: ['Backend endpoints and data handling for monitoring features.'],
     challenges: [],
     outcomes: ['Backend contributions integrated into the team project.'],
-    screenshots: [],
+    screenshots: ['/documentation/ptpn-documentation.webp'],
   },
   {
     slug: 'mahad-abu-darda',

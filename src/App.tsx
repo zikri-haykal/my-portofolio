@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Contact';
+import { IosWelcomeScreen } from './components/IosWelcomeScreen';
 import { lazy, Suspense } from 'react';
 import Home from './pages/Home';
 const ProjectDetail = lazy(() => import('./pages/ProjectDetail'));
@@ -21,6 +22,7 @@ function ScrollManager() {
 export default function App() {
   return (
     <BrowserRouter>
+      <IosWelcomeScreen />
       <ScrollManager />
       <Navbar />
       <main id="main">

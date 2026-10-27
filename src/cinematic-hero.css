@@ -1,0 +1,670 @@
+/* ============================================================
+   CINEMATIC HERO (Hanging Lanyard ID Badge & Refined Intro)
+   ============================================================ */
+.cinematic-hero {
+  padding: clamp(8px, 1.5vw, 18px) 0 clamp(28px, 3.5vw, 48px);
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 1. TOP TIER: HANGING LANYARD ID BADGE */
+.hero-lanyard-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+/* Metallic Clip & Fabric Lanyard Strap */
+.lanyard-rig {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -12px;
+  margin-bottom: -8px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.lanyard-strap {
+  width: 22px;
+  height: 32px;
+  background: linear-gradient(90deg, #18201a 0%, #29342c 50%, #18201a 100%);
+  border-radius: 2px 2px 0 0;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.22);
+}
+
+.lanyard-strap-stitch {
+  position: absolute;
+  inset: 0 3px;
+  border-left: 1px dashed rgba(255, 255, 255, 0.2);
+  border-right: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.lanyard-clip {
+  width: 18px;
+  height: 13px;
+  background: linear-gradient(180deg, #f1f5f9 0%, #9ca3af 60%, #4b5563 100%);
+  border-radius: 3px;
+  border: 1px solid #9ca3af;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+}
+
+.lanyard-ring {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid #4b5563;
+  position: absolute;
+  bottom: -5px;
+  background: #9ca3af;
+}
+
+/* The Hanging ID Card Badge */
+.lanyard-card {
+  width: clamp(170px, 16vw, 196px);
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  padding: 10px 12px 12px;
+  box-shadow: 0 16px 40px rgba(23, 25, 23, 0.09), 0 2px 6px rgba(0, 0, 0, 0.03);
+  position: relative;
+  transform-origin: 50% -16px;
+  cursor: pointer;
+  transition: box-shadow 0.35s var(--ease);
+}
+
+.lanyard-card:hover {
+  box-shadow: 0 24px 50px rgba(23, 25, 23, 0.14), 0 4px 12px rgba(58, 163, 159, 0.14);
+}
+
+/* Punch Hole at the top of the Badge */
+.lanyard-slot-hole {
+  width: 26px;
+  height: 5px;
+  border-radius: 999px;
+  background: #e5eae6;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  margin: 0 auto 8px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.lanyard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  padding: 0 2px;
+}
+
+.lanyard-chip-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  color: var(--ink-3);
+  letter-spacing: 0.06em;
+}
+
+.lanyard-gold-chip {
+  width: 15px;
+  height: 11px;
+  background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+  border-radius: 3px;
+  border: 1px solid #b45309;
+  display: inline-block;
+  box-shadow: 0 1px 3px rgba(180, 83, 9, 0.3);
+}
+
+/* Glowing Status Dot */
+.lanyard-status-dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-led-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 8px #22c55e;
+  animation: pulseLed 2s infinite;
+}
+
+@keyframes pulseLed {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+/* Large Portrait Photo Frame */
+.lanyard-photo-box {
+  width: 100%;
+  aspect-ratio: 4 / 4.7;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+}
+
+.lanyard-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease);
+}
+
+.lanyard-card:hover .lanyard-photo-img {
+  transform: scale(1.05);
+}
+
+/* Badge Footer Details */
+.lanyard-footer {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+}
+
+.lanyard-name-row {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.lanyard-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.lanyard-role {
+  font-size: 11px;
+  color: var(--accent-ink);
+  letter-spacing: 0.03em;
+}
+
+.lanyard-barcode-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px dashed var(--line);
+  padding-top: 6px;
+  margin-top: 2px;
+}
+
+.lanyard-badge-tag {
+  font-size: 9px;
+  color: var(--ink-3);
+  letter-spacing: 0.06em;
+}
+
+.lanyard-barcode-lines {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: -0.05em;
+  color: var(--ink-2);
+  opacity: 0.65;
+}
+
+/* 2. CENTERED REFINED INTRO (UKURAN DIPERKECIL & SEIMBANG) */
+.hero-centered-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.hero-refined-title {
+  font-family: var(--display);
+  font-size: clamp(22px, 2.3vw, 30px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin: 0 0 12px;
+  max-width: 30ch;
+}
+
+.cinematic-accent {
+  font-style: normal;
+  background: linear-gradient(135deg, #1b6360 0%, #3aa39f 55%, #15807c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline;
+}
+
+.hero-refined-lead {
+  font-size: clamp(13px, 0.95vw, 14.5px);
+  line-height: 1.6;
+  color: var(--ink-2);
+  max-width: 52ch;
+  margin: 0 0 16px;
+}
+
+.hero-refined-lead strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Action Buttons */
+.hero-centered-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Centered Minimalist Metrics Ribbon */
+.hero-metrics-ribbon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(14px, 2.5vw, 28px);
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 580px;
+}
+
+.hero-metric-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-metric-val {
+  font-family: var(--display);
+  font-size: clamp(18px, 1.8vw, 24px);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.hero-metric-lbl {
+  display: flex;
+  flex-direction: column;
+  font-size: 10.5px;
+  line-height: 1.25;
+  margin-top: 2px;
+}
+
+.hero-metric-lbl strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.hero-metric-lbl .mono {
+  color: var(--ink-3);
+  font-size: 9.5px;
+}
+
+.hero-metric-sep {
+  width: 1px;
+  height: 24px;
+  background: var(--line);
+}
+
+/* 3. BOTTOM TIER: PANORAMIC LINUX TERMINAL SHOWCASE */
+.cinematic-terminal-wrapper {
+  margin-top: clamp(18px, 2.2vw, 30px);
+}
+
+.cinematic-terminal-card {
+  background: #131614;
+  color: #e5eae6;
+  border: 1px solid #262e28;
+  border-radius: 20px;
+  padding: clamp(20px, 2.6vw, 32px);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.22), 0 0 32px rgba(58, 163, 159, 0.08);
+  transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+
+.cinematic-terminal-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 24px 54px rgba(0, 0, 0, 0.28), 0 0 40px rgba(58, 163, 159, 0.15);
+}
+
+/* Terminal Window Header */
+.cinematic-term-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #232a25;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.cinematic-term-controls {
+  display: flex;
+  gap: 7px;
+}
+
+.term-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+
+.term-dot--red { background: #ef4444; }
+.term-dot--yellow { background: #eab308; }
+.term-dot--green { background: #22c55e; }
+
+/* Interactive Command Tabs */
+.cinematic-term-tabs {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.cinematic-term-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: #1a1e1b;
+  border: 1px solid #28302a;
+  color: #8c9e94;
+  font-family: var(--mono);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s var(--ease);
+}
+
+.cinematic-term-tab:hover {
+  color: #ffffff;
+  border-color: #3f4c43;
+  background: #202622;
+}
+
+.cinematic-term-tab.active {
+  background: #242c26;
+  border-color: var(--accent);
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(58, 163, 159, 0.25);
+}
+
+.cinematic-term-badge {
+  font-size: 11px;
+  color: #627267;
+  letter-spacing: 0.05em;
+}
+
+/* Terminal CLI Body & Sessions */
+.cinematic-term-body {
+  font-family: var(--mono);
+}
+
+.cli-line {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 13px;
+  line-height: 1.5;
+  flex-wrap: wrap;
+}
+
+.cli-user {
+  color: #4ade80;
+  font-weight: 600;
+}
+
+.cli-sep {
+  color: #627267;
+}
+
+.cli-path {
+  color: #38bdf8;
+}
+
+.cli-prompt {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.cli-command {
+  color: #f1f5f9;
+  font-weight: 500;
+}
+
+.cli-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 15px;
+  background: #22c55e;
+  vertical-align: middle;
+  animation: blinkCursor 1s step-end infinite;
+}
+
+@keyframes blinkCursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cli-result {
+  padding-left: 14px;
+  border-left: 2px solid #242e27;
+  margin: 10px 0 10px 4px;
+}
+
+.cli-result--name {
+  color: #6ee7b7;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  padding-left: 14px;
+  border-left: 2px solid #242e27;
+  margin: 8px 0 14px 4px;
+}
+
+/* Tab 1: Whoami Profile Info Grid */
+.cli-grid-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 10px 36px;
+}
+
+.cli-info-row {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 14px;
+  align-items: baseline;
+  font-size: 12px;
+}
+
+.cli-k {
+  color: #718278;
+  font-size: 11px;
+}
+
+.cli-v {
+  color: #e5ece7;
+}
+
+.cli-v--accent {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.cli-v--success {
+  color: #4ade80;
+  font-weight: 500;
+}
+
+/* Tab 2: Neofetch Layout */
+.cli-neofetch-container {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  margin-top: 10px;
+  padding-left: 14px;
+  border-left: 2px solid #242e27;
+  margin-left: 4px;
+  flex-wrap: wrap;
+}
+
+.cli-neofetch-ascii {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.25;
+  color: #3aa39f;
+  background: transparent;
+  flex-shrink: 0;
+}
+
+.cli-neofetch-details {
+  flex: 1;
+  min-width: 260px;
+}
+
+.cli-neofetch-header {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.cli-neofetch-user {
+  color: #4ade80;
+}
+
+.cli-neofetch-host {
+  color: #38bdf8;
+}
+
+.cli-neofetch-divider {
+  color: #3f4c43;
+  font-size: 11px;
+  margin-bottom: 8px;
+}
+
+.cli-neofetch-specs {
+  display: grid;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.cli-spec-row {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 12px;
+}
+
+.cli-spec-k {
+  color: #718278;
+  font-size: 11px;
+}
+
+.cli-spec-v {
+  color: #e5ece7;
+}
+
+.cli-color-matrix {
+  display: flex;
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.cli-color-matrix span {
+  width: 16px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+/* Tab 3: Experience Log Cards */
+.cli-exp-grid {
+  padding-left: 14px;
+  border-left: 2px solid #242e27;
+  margin: 10px 0 10px 4px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px 28px;
+}
+
+.cli-exp-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cli-exp-card-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.cli-exp-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.cli-exp-badge--brin {
+  background: #1e3a8a;
+  color: #bfdbfe;
+}
+
+.cli-exp-badge--ptpn {
+  background: #14532d;
+  color: #bbf7d0;
+}
+
+.cli-exp-card-body {
+  font-size: 11px;
+  color: #94a39b;
+  line-height: 1.5;
+  padding-left: 4px;
+}
+
+.cli-exp-status {
+  grid-column: 1 / -1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #4ade80;
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 6px;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 640px) {
+  .hero-centered-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero-centered-actions .btn {
+    justify-content: center;
+  }
+  .hero-metrics-ribbon {
+    gap: 16px;
+  }
+  .hero-metric-sep {
+    display: none;
+  }
+  .cli-info-row,
+  .cli-spec-row {
+    grid-template-columns: 100px 1fr;
+    gap: 8px;
+  }
+}

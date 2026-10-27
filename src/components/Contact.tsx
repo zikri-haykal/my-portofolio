@@ -41,7 +41,15 @@ export function Footer() {
     <footer className="footer">
       <div className="wrap footer-inner">
         <span>© {currentYear} {site.name}</span>
-        <nav aria-label="Footer">
+        <nav aria-label="Footer" style={{ display: 'flex', alignItems: 'center', gap: '14px', flexWrap: 'wrap' }}>
+          <button
+            type="button"
+            className="btn-replay-welcome"
+            onClick={() => window.dispatchEvent(new Event('replay-ios-welcome'))}
+            title="Replay iOS Welcome Experience"
+          >
+            ✦ Replay Intro
+          </button>
           <Link to="/#projects">Projects</Link>
           <a href={site.github} target="_blank" rel="noreferrer">GitHub</a>
           <a href={site.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
