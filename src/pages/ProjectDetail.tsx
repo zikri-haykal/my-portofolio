@@ -13,11 +13,19 @@ const assetCaptions: Record<string, string> = {
   '/projects/spacemap.png': 'SPACeMAP — BRIN Remote Sensing Web Portal Reengineered to Bootstrap 5',
   '/projects/guilandsat.png': 'Landsat Scene Downloader — Tkinter Desktop GUI with USGS M2M API',
   '/projects/akomodasi-rapat.png': 'Online Accommodation System — Meeting Calculator & Cost Estimation Form',
+  '/projects/kesuburan-tanah.png': 'AgriSmart Palm Oil GIS — Soil Fertility & Plantation Block Nutrient Dashboard',
   '/projects/mahadabudarda.jpeg': "Official School Web Portal — Sekolah Ma'had Abu Ad Darda'",
   '/certs/thumbs/HakCipta-Mahad.png': 'Surat Pencatatan Hak Cipta Kemenkumham RI (No. 000792817)',
   '/documentation/brin-docs-2.webp': 'BRIN — Presentation & Review Meeting for SPACeMAP Portal Reengineering',
   '/documentation/brin-docs.webp': 'BRIN — Software Engineering Internship Team at BRIN Headquarters',
   '/documentation/ptpn-documentation.webp': 'PTPN IV — Demonstration & Deployment of Soil Fertility Monitoring Platform',
+  '/projects/dl-pekanbaru.jpeg': 'Prediksi Rumah — Landing Page & Dashboard Overview',
+  '/projects/dl-pekanbaru2.jpeg': 'Prediksi Rumah — Property Image Upload Interface for CNN Feature Extraction',
+  '/projects/dl-pekanbaru3.jpeg': 'Prediksi Rumah — Multimodal Input Form (House Photo + Tabular Property Attributes)',
+  '/projects/dl-pekanbaru4.jpeg': 'Prediksi Rumah — Hybrid CNN + ANN Real-Time Rupiah Valuation Output',
+  '/projects/DL-socal.jpeg': 'US Housing Forecast — Interactive State Selection & Time-Series Dashboard',
+  '/projects/dl-socal2.jpeg': 'US Housing Forecast — 1-Month vs. 12-Month LSTM Price Projections (California)',
+  '/projects/nlp-project.png': 'MEDICIO Chatbot Medis — Seq2Seq LSTM Medical Q&A Web Interface (MedlinePlus)',
 };
 
 export default function ProjectDetail() {
@@ -55,13 +63,13 @@ export default function ProjectDetail() {
         <dl className="detail-meta">
           <div><dt className="mono">Role</dt><dd>{p.role}</dd></div>
           <div><dt className="mono">Context</dt><dd>{p.context ?? 'Academic / personal'}</dd></div>
-          <div><dt className="mono">Stack</dt><dd>{p.stack.join(', ')}</dd></div>
+          <div><dt className="mono">{p.algorithm ? 'Algorithm & Stack' : 'Stack'}</dt><dd>{p.algorithm ? `${p.algorithm} · ${p.stack.join(', ')}` : p.stack.join(', ')}</dd></div>
           <div>
             <dt className="mono">Links</dt>
             <dd className="link-row">
               {p.github && <a className="ulink" href={p.github} target="_blank" rel="noreferrer">GitHub <ArrowUpRight size={13} /></a>}
               {p.demo && <a className="ulink" href={p.demo} target="_blank" rel="noreferrer">Live demo <ArrowUpRight size={13} /></a>}
-              {!p.github && !p.demo && <span style={{ color: 'var(--ink-3)' }}>Private / internal enterprise</span>}
+              {!p.github && !p.demo && <span style={{ color: 'var(--ink-3)' }}>{p.tier === 'ai-ml' ? 'Academic research & repository' : 'Private / internal enterprise'}</span>}
             </dd>
           </div>
         </dl>
@@ -115,10 +123,9 @@ export default function ProjectDetail() {
             </div>
           ) : (
             <div className="detail-restricted-note">
-              <span className="mono">Enterprise Confidentiality</span>
+              <span className="mono">{p.context ?? p.category}</span>
               <p>
-                This was an internal backend infrastructure project developed during the PT Perkebunan Nusantara IV (Persero) internship.
-                Operational database interfaces and internal monitoring schemas are restricted under enterprise confidentiality guidelines.
+                {p.overview}
               </p>
             </div>
           )}

@@ -6,7 +6,7 @@ export const site = {
   name: 'Zikri Haykal',
   fullName: 'Muhammad Zikri Haykal',
   role: 'Software Developer',
-  headline: 'Web & Mobile Developer | Backend Systems | Exploring Machine Learning',
+  headline: 'Software Developer | Web & Mobile Development | Exploring AI & Machine Learning',
   openToWork: true, // set false to hide the availability badge
   email: 'zikrihaikalpku01@gmail.com',
   phone: '+62 822-6067-8461',
@@ -16,12 +16,6 @@ export const site = {
   photo: '/myself/myself.webp',
   location: 'Pekanbaru, Riau, Indonesia',
 };
-
-export const stats = [
-  { value: '3.70', label: 'GPA / 4.00', note: 'D4 Teknik Informatika, Politeknik Caltex Riau' },
-  { value: '2', label: 'Internship organizations', note: 'BRIN & PTPN' },
-  { value: '5+', label: 'IT tickets / day', note: 'Handled as IT Support at PTPN — not projects built' },
-];
 
 export type Experience = {
   org: string;
@@ -67,6 +61,7 @@ export const experiences: Experience[] = [
     projects: ['akomodasi-ptpn', 'soil-monitoring'],
     gallery: [
       { src: '/projects/akomodasi-rapat.png', caption: 'Online Accommodation System — Meeting Calculator module' },
+      { src: '/projects/kesuburan-tanah.png', caption: 'AgriSmart Palm Oil GIS — Soil Fertility & Plantation Block Monitoring Dashboard' },
       { src: '/documentation/ptpn-documentation.webp', caption: 'PTPN IV — Demonstration and deployment of the Soil Fertility Monitoring platform' },
       { src: '/documentation/Sertifikat_Magang_PTPN_thumb.png', caption: 'PTPN IV — Official Certificate of Completion (Magang Berdampak, Predicate: Sangat Baik)' },
     ],
@@ -80,7 +75,7 @@ export const skills: { group: string; items: string[]; learning?: boolean }[] = 
   { group: 'Desktop & API', items: ['Tkinter', 'CustomTkinter', 'USGS M2M API'] },
   { group: 'Networking', items: ['IP Addressing', 'Switching', 'Routing', 'LAN Configuration', 'Cisco Packet Tracer'] },
   { group: 'Tools', items: ['VS Code', 'Git / GitHub', 'Google Colab', 'Jupyter Notebook', 'Tableau'] },
-  { group: 'Data & AI', items: ['Machine Learning', 'Deep Learning', 'Data Analytics'], learning: true },
+  { group: 'Data & AI', items: ['Machine Learning', 'Deep Learning (CNN, ANN, LSTM)', 'NLP (Seq2Seq / NLTK)', 'TensorFlow / Keras', 'Scikit-learn', 'Data Analytics'], learning: true },
 ];
 
 export type Certification = {
@@ -212,7 +207,10 @@ export type Project = {
   index: string;
   title: string;
   category: string;
+  tier: 'ai-ml' | 'web' | 'other';
   featured?: boolean;
+  algorithm?: string;
+  highlightMetric?: string;
   summary: string;
   role: string;
   stack: string[];
@@ -231,13 +229,188 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: 'rafalmer',
+    slug: 'sweet-sensation',
     index: '01',
+    title: 'Sweet Sensation',
+    category: 'Android & Machine Learning',
+    tier: 'ai-ml',
+    featured: true,
+    algorithm: 'K-Nearest Neighbors (KNN)',
+    highlightMetric: 'Multi-Feature Apple Ripeness Classification (Color, Size & Texture)',
+    summary:
+      'Android-based educational application that implements Machine Learning using the K-Nearest Neighbors (KNN) algorithm to predict apple ripeness based on color, size, and texture features, complete with interactive educational quizzes for children.',
+    role: 'Android & ML Developer',
+    stack: ['Machine Learning', 'KNN', 'Kotlin', 'Android'],
+    context: 'Mobile & Machine Learning Project',
+    accent: '#D9822B',
+    overview:
+      'An educational Android application combining a practical K-Nearest Neighbors (KNN) machine learning classifier with interactive learning modules, turning fruit ripeness identification and nutrition facts into an engaging experience for children.',
+    problem:
+      'Children typically learn about fruit characteristics passively from static textbooks; the application introduces an interactive, hands-on way to evaluate apple ripeness using real physical attributes and test comprehension through gamified quizzes.',
+    contribution: [
+      'Architected and built the native Android user interface and multi-screen navigation in Kotlin.',
+      'Implemented the K-Nearest Neighbors (KNN) classification workflow evaluating color, size, and texture inputs to predict apple ripeness levels.',
+      'Developed the interactive educational fruit quiz module with instant visual feedback for children.',
+    ],
+    implementation: [
+      'Native Kotlin Android application structured with responsive activity-based screens.',
+      'K-Nearest Neighbors (KNN) supervised classification pipeline mapping physical fruit attributes (color, size, texture) to discrete ripeness categories.',
+    ],
+    challenges: [
+      {
+        challenge: 'Translating numerical KNN classification outputs into an intuitive format for young learners.',
+        solution: 'Mapped model predictions into clear, child-friendly visual ripeness stages paired with illustrated educational cards.',
+      },
+    ],
+    outcomes: [
+      'Delivered a functional Android ML application integrating KNN apple ripeness prediction and interactive educational quizzes.',
+    ],
+    screenshots: ['/projects/sweet3.png', '/projects/sweet1.png', '/projects/sweet2.png'],
+  },
+  {
+    slug: 'pekanbaru-house-price-cnn-ann',
+    index: '02',
+    title: 'Pekanbaru House Price Prediction',
+    category: 'Deep Learning · Multimodal CNN & ANN',
+    tier: 'ai-ml',
+    featured: true,
+    algorithm: 'Hybrid 5-Block CNN + MLP (ANN)',
+    highlightMetric: '1,465 Scraped Listings (99.co) · 70% Real-World Valuation Accuracy',
+    summary:
+      'Multimodal deep learning system combining a 5-block Convolutional Neural Network (CNN) for property images and a Multi-Layer Perceptron (ANN) for tabular features scraped from 99.co to predict residential prices in Pekanbaru.',
+    role: 'Machine Learning Developer',
+    stack: ['Deep Learning', 'CNN', 'ANN', 'Python', 'TensorFlow', 'Scikit-learn', 'Web Scraping'],
+    context: 'Deep Learning Project · Politeknik Caltex Riau',
+    accent: '#0D9488',
+    overview:
+      'A multimodal property valuation system designed to estimate residential prices in Pekanbaru, Riau. By fusing visual condition features extracted from house photographs via a CNN with structured tabular attributes (bedrooms, bathrooms, land area, and building area) processed through an ANN (MLP), the hybrid model captures both physical specifications and visual property appeal.',
+    problem:
+      'Estimating house prices in Pekanbaru using only tabular specifications overlooks visual building condition and exterior quality, while raw listing data suffers from unstructured text formats and heavily skewed price distributions.',
+    contribution: [
+      'Collected 1,465 Pekanbaru house listings and property images from 99.co via automated web scraping.',
+      'Built a tabular preprocessing pipeline to parse Indonesian currency strings ("Rp Juta/Miliar") and area units ("m²") into numeric values, handle missing data with mode imputation, and apply log1p transformation with IQR outlier filtering.',
+      'Designed a dual-branch hybrid neural network combining a 5-block CNN (Conv2D, BatchNormalization, ReLU, MaxPooling2D, Dropout 0.3) for 64×64 RGB images and an MLP branch for MinMax-scaled tabular features.',
+      'Integrated the trained .keras model into a web application allowing users to upload a house photo and property attributes to get real-time Rupiah price predictions.',
+    ],
+    implementation: [
+      'Hybrid concatenation of CNN image embeddings and MLP tabular representations followed by Dense (64 → 32 → 1 linear) regression layers.',
+      'Trained for 100 epochs (batch size 100) using Adam optimizer (lr = 1e-4) with MSE loss and MAE metric, converting log-scale predictions back to Rupiah via np.expm1.',
+      'Image preprocessing pipeline using PIL to standardize dimensions to 64×64 pixels and normalize RGB pixel values to [0, 1].',
+    ],
+    challenges: [
+      {
+        challenge: 'Highly right-skewed house price distribution with extreme luxury outliers.',
+        solution: 'Applied logarithmic transformation (log1p) and IQR-based outlier removal prior to training, then inverted predictions with expm1 to restore Rupiah values.',
+      },
+      {
+        challenge: 'Inconsistent raw text formats for prices ("Rp 980 Juta", "Rp 1,3 Miliar") and land/building measurements.',
+        solution: 'Created custom parsing functions (convert_harga and remove_m2) paired with Scikit-learn MinMaxScaler normalization.',
+      },
+    ],
+    outcomes: [
+      'Curated and modeled 1,465 Pekanbaru residential property listings (1,155 train / 289 test samples after cleaning).',
+      'Achieved 70% prediction accuracy within a 25% real-world price tolerance threshold on unseen Pekanbaru house listings.',
+      'Deployed the multimodal CNN + ANN inference pipeline into an interactive web interface.',
+    ],
+    screenshots: [
+      '/projects/dl-pekanbaru.jpeg',
+      '/projects/dl-pekanbaru2.jpeg',
+      '/projects/dl-pekanbaru3.jpeg',
+      '/projects/dl-pekanbaru4.jpeg',
+    ],
+  },
+  {
+    slug: 'us-housing-timeseries-lstm',
+    index: '03',
+    title: 'US Housing Price Forecasting (LSTM)',
+    category: 'Deep Learning · Time-Series Forecasting',
+    tier: 'ai-ml',
+    featured: true,
+    algorithm: 'Sequential LSTM (25-Step Sliding Window)',
+    highlightMetric: '305 Monthly Timesteps (2000–2025) · R² = 0.92 & 2% MAPE (Texas)',
+    summary:
+      'Time-series deep learning forecasting system using Long Short-Term Memory (LSTM) networks on Zillow Home Value Index (ZHVI) data (2000–2025) to project 1-month and 12-month housing price trends across five major U.S. states.',
+    role: 'Machine Learning Developer',
+    stack: ['Deep Learning', 'LSTM', 'Python', 'TensorFlow', 'Scikit-learn', 'Pandas', 'Matplotlib'],
+    context: 'Deep Learning Project · Politeknik Caltex Riau',
+    accent: '#6366F1',
+    overview:
+      'A longitudinal real-estate forecasting system built on 25 years of monthly Zillow Home Value Index (ZHVI) time-series data (Jan 2000 – May 2025). The project analyzes historical price trajectories—including the 2008 financial crisis and post-2020 pandemic surge—across the five most populous U.S. states (California, Texas, Florida, New York, and Pennsylvania) and projects 1-month and 12-month future housing values.',
+    problem:
+      'Housing markets exhibit long-term temporal dependencies, macroeconomic cycles, and regional volatility that require sequence-aware deep learning architectures to model effectively.',
+    contribution: [
+      'Processed 305 monthly time-series observations (2000–2025) from the Kaggle Zillow Home Value Index (ZHVI) dataset across 51 states, focusing on California, Texas, Florida, New York, and Pennsylvania.',
+      'Engineered state-specific MinMaxScaler normalization and a 25-timestep sliding window sequence generator (create_dataset) with an 80/20 chronological train-test split.',
+      'Built and trained Sequential LSTM networks (32 LSTM units, 20% Dropout, Dense 16 ReLU, linear output) over 100 epochs with Adam optimizer and MSE loss.',
+      'Implemented autoregressive 1-month and 12-month rolling forecast pipelines (June 2025 – May 2026) and surfaced the visualizations in a web interface.',
+    ],
+    implementation: [
+      'Univariate time-series sequence modeling with input shape (25, 1) through LSTM(32), Dropout(0.2), Dense(16, ReLU), and Dense(1) layers.',
+      'Multi-metric regression evaluation across all five state models using MSE, RMSE, MAE, MAPE, and R² Score.',
+      'Iterative multi-step forecasting feeding each predicted month back into the 25-step sliding window and inverse-transforming scaled outputs.',
+    ],
+    challenges: [
+      {
+        challenge: 'Divergent regional market dynamics, such as sharp post-2020 surges in Florida and Texas versus steadier long-term growth in New York and Pennsylvania.',
+        solution: 'Trained dedicated per-state MinMaxScalers and specialized sequential models tailored to each state’s historical price distribution.',
+      },
+    ],
+    outcomes: [
+      'Achieved R² = 0.92 and 2% MAPE (MAE $6,743) on the Texas housing model and R² = 0.65 with 6% MAPE on the Pennsylvania model.',
+      'Generated comparative 12-month projections (2025–2026) identifying potential post-surge market corrections in California, Texas, and Florida versus sustained stability in New York and Pennsylvania.',
+    ],
+    screenshots: ['/projects/DL-socal.jpeg', '/projects/dl-socal2.jpeg'],
+  },
+  {
+    slug: 'medical-chatbot-seq2seq',
+    index: '04',
+    title: 'Medical Consultation Chatbot (Seq2Seq)',
+    category: 'Natural Language Processing · Seq2Seq LSTM',
+    tier: 'ai-ml',
+    featured: true,
+    algorithm: 'Encoder-Decoder Seq2Seq LSTM (Teacher Forcing)',
+    highlightMetric: '981 NIH MedQuAD Q&A Pairs · 80.3% Training Accuracy · BLEU 0.60',
+    summary:
+      'Generative medical question-answering chatbot built with an Encoder-Decoder Sequence-to-Sequence (Seq2Seq) LSTM architecture trained on NIH MedQuAD / MedlinePlus health topics, deployed on Web (Flask) and Telegram.',
+    role: 'NLP & Machine Learning Developer',
+    stack: ['Deep Learning', 'Seq2Seq LSTM', 'Python', 'TensorFlow', 'NLTK', 'Flask', 'Telegram Bot API'],
+    context: 'NLP Project · Politeknik Caltex Riau',
+    accent: '#E11D48',
+    overview:
+      'An intelligent healthcare consultation chatbot designed to answer user questions regarding common diseases and medical conditions (including diabetes, asthma, dengue fever, and hypothyroidism). Built with a generative Sequence-to-Sequence (Seq2Seq) LSTM architecture trained on curated NIH MedQuAD (MedlinePlus) Q&A pairs, the system synthesizes natural, context-aware medical explanations.',
+    problem:
+      'Conventional manual medical consultation faces waiting-time and scalability bottlenecks, while static FAQ lookups struggle to respond flexibly to varied natural-language health queries.',
+    contribution: [
+      'Developed an automated Python XML-to-CSV parser to extract and validate 981 clean medical Q&A pairs from the NIH MedQuAD (MPlus Health Topics) dataset.',
+      'Performed Exploratory Data Analysis (character length distributions, KDE plots, top-20 lexical frequencies, and WordClouds) analyzing the asymmetry between short questions (~86 chars) and detailed clinical answers (~896 chars).',
+      'Built dual NLTK preprocessing pipelines: lowercasing, punctuation removal, stopword filtering, and WordNet lemmatization for questions, paired with <start>/<end> token wrapping and a 7,366-word Keras Tokenizer for answers.',
+      'Constructed and trained a Teacher-Forcing Seq2Seq LSTM model (Embedding 128, Dropout 0.3, LSTM encoder-decoder transferring state_h and state_c context vectors) for 400 epochs, and deployed standalone inference models to a Flask Web UI and Telegram bot.',
+    ],
+    implementation: [
+      'Encoder-Decoder LSTM architecture mapping 6-token padded question sequences to 328-token padded answer sequences via shared context state vectors (state_h, state_c) and Softmax token projection.',
+      'Trained over 400 epochs (batch size 16) using Adam (lr = 0.001) and sparse_categorical_crossentropy, serializing encoder/decoder models (.keras / .h5) and pickle tokenizers.',
+      'Greedy argmax token-by-token sequence decoding (decode_sequence) integrated with a Flask web application ("Chatbot Medis – Sumber Medline Plus") and Telegram Messenger.',
+    ],
+    challenges: [
+      {
+        challenge: 'Significant sequence length disparity between concise symptom/disease queries (6 tokens) and comprehensive medical explanations (up to 328 tokens).',
+        solution: 'Applied teacher forcing with one-step shifted target sequences during training and decoupled stateful encoder/decoder models for step-by-step generation during inference.',
+      },
+    ],
+    outcomes: [
+      'Improved model training performance from 44.6% initial accuracy (loss 6.83) to 80.3% accuracy (loss 0.81) over 400 epochs.',
+      'Evaluated generative output with NLTK smoothed n-gram BLEU metrics (reaching 0.60 overall relevance / BLEU-1: 0.2775) and deployed across Flask Web UI and Telegram.',
+    ],
+    screenshots: ['/projects/nlp-project.png'],
+  },
+  {
+    slug: 'rafalmer',
+    index: '05',
     title: 'Rafalmer',
     category: 'E-commerce Web Application',
-    featured: true,
+    tier: 'web',
     summary:
-      'Online store for an MSME built with Laravel using the Prototyping method — catalog, categories, cart, ordering and manual payment confirmation.',
+      'Online store for an MSME built with Laravel using the Prototyping method — structured product catalog, category filtering, shopping cart, checkout flow, and server-side manual payment verification.',
     role: 'Full-stack Developer',
     stack: ['Laravel', 'PHP', 'Bootstrap', 'MySQL'],
     context: 'Final project',
@@ -275,150 +448,13 @@ export const projects: Project[] = [
     screenshots: ['/projects/rafalmer.png'],
   },
   {
-    slug: 'sweet-sensation',
-    index: '02',
-    title: 'Sweet Sensation',
-    category: 'Android & Machine Learning',
-    summary:
-      'Educational Android app that predicts apple ripeness using K-Nearest Neighbors and offers an interactive fruit quiz for children.',
-    role: 'Android Developer',
-    stack: ['Kotlin', 'Android', 'KNN'],
-    accent: '#D9822B',
-    overview:
-      'An Android app combining a simple ML classifier with learning content, making fruit education more interactive for kids.',
-    problem: 'Children learn about fruit passively; the app adds an interactive, playful way to explore ripeness and fruit facts.',
-    contribution: [
-      'Built the Android interface and navigation in Kotlin.',
-      'Implemented the KNN-based ripeness prediction flow.',
-      'Developed the interactive quiz module.',
-    ],
-    implementation: [
-      'Kotlin Android app with activity-based screens.',
-      'K-Nearest Neighbors classification for ripeness levels.',
-    ],
-    challenges: [
-      {
-        challenge: 'Making ML output understandable for children.',
-        solution: 'Presented predictions as simple, visual ripeness categories.',
-      },
-    ],
-    outcomes: ['Working prototype covering prediction and quiz features.'],
-    screenshots: ['/projects/sweet3.png', '/projects/sweet1.png', '/projects/sweet2.png'],
-  },
-  {
-    slug: 'spacemap',
-    index: '03',
-    title: 'SpaceMap',
-    category: 'Website Reengineering · BRIN',
-    summary:
-      'Reengineered the SpaceMap information website during the BRIN internship, migrating Bootstrap 4 to Bootstrap 5 and refreshing the UI.',
-    role: 'Frontend Developer (Intern)',
-    stack: ['HTML', 'CSS', 'JavaScript', 'Bootstrap 4/5'],
-    context: 'BRIN internship',
-    accent: '#3B6FD9',
-    overview: 'SpaceMap is an information website for a BRIN application. The goal was to modernize it without losing content.',
-    problem: 'The site relied on Bootstrap 4 with an outdated interface, making maintenance and responsiveness harder.',
-    contribution: [
-      'Audited existing pages and components.',
-      'Migrated markup and utilities from Bootstrap 4 to Bootstrap 5.',
-      'Updated the visual interface for a cleaner, more consistent look.',
-    ],
-    implementation: [
-      'Replaced deprecated Bootstrap 4 classes and jQuery-dependent components.',
-      'Restructured layouts using Bootstrap 5 grid and utilities.',
-    ],
-    challenges: [
-      {
-        challenge: 'Breaking changes between Bootstrap versions.',
-        solution: 'Migrated page by page and verified each layout across breakpoints.',
-      },
-    ],
-    outcomes: ['Website running on Bootstrap 5 with an updated interface.'],
-    screenshots: ['/projects/spacemap.png', '/documentation/brin-docs-2.webp', '/documentation/brin-docs.webp'],
-  },
-  {
-    slug: 'landsat-downloader',
-    index: '04',
-    title: 'Landsat Scene Downloader',
-    category: 'Desktop Application · BRIN',
-    summary:
-      'Python GUI app integrating the USGS M2M API to search and download Landsat 8–9 Collection 2 Level-1 imagery by Path/Row.',
-    role: 'Software Developer (Intern)',
-    stack: ['Python', 'Tkinter', 'CustomTkinter', 'USGS M2M API'],
-    context: 'BRIN internship',
-    accent: '#7A5AF8',
-    overview: 'A desktop tool that streamlines finding and downloading Landsat scenes for researchers.',
-    problem: 'Searching and downloading scenes through the web portal one by one was repetitive and slow.',
-    contribution: [
-      'Built the GUI with Tkinter and CustomTkinter.',
-      'Integrated USGS M2M API authentication, scene search and download requests.',
-      'Collaborated with the team on requirements and testing.',
-    ],
-    implementation: [
-      'Path/Row and date based scene search for Landsat 8–9 Collection 2 Level-1.',
-      'API calls handled off the UI thread to keep the interface responsive.',
-    ],
-    challenges: [
-      {
-        challenge: 'Long-running downloads freezing the GUI.',
-        solution: 'Moved network work to background threads with progress feedback.',
-      },
-    ],
-    outcomes: ['Working desktop app used to search and download Landsat scenes.'],
-    screenshots: ['/projects/guilandsat.png'],
-  },
-  {
-    slug: 'akomodasi-ptpn',
-    index: '05',
-    title: 'Online Accommodation System',
-    category: 'Feature Development · PTPN',
-    summary:
-      'Contributed the Meeting Calculator feature for cost estimation and approval flow in an online business-trip accommodation system.',
-    role: 'Software Developer (Intern)',
-    stack: ['Laravel', 'PHP', 'Bootstrap 5'],
-    context: 'PTPN internship',
-    accent: '#C2410C',
-    overview: 'An internal system for managing official-trip accommodation requests at PTPN.',
-    problem: 'Meeting cost estimates were calculated manually before approval, slowing the process.',
-    contribution: [
-      'Developed the Meeting Calculator feature.',
-      'Implemented the cost estimation logic and approval flow integration.',
-    ],
-    implementation: ['Laravel controllers and Blade views styled with Bootstrap 5.'],
-    challenges: [
-      {
-        challenge: 'Fitting a new feature into an existing codebase.',
-        solution: 'Followed existing conventions and reused established components.',
-      },
-    ],
-    outcomes: ['Meeting Calculator feature delivered into the system.'],
-    screenshots: ['/projects/akomodasi-rapat.png'],
-  },
-  {
-    slug: 'soil-monitoring',
-    index: '06',
-    title: 'Soil Fertility Monitoring',
-    category: 'Backend Development · PTPN',
-    summary: 'Contributed to the backend of a website supporting soil fertility monitoring functionality.',
-    role: 'Backend Developer (Intern)',
-    stack: ['PHP', 'MySQL', 'Backend API', 'Relational Database'],
-    context: 'PTPN internship',
-    accent: '#4D7C0F',
-    overview: 'A web platform to support monitoring of soil fertility data in plantation areas.',
-    problem: 'Soil fertility data needed a structured system for recording and monitoring.',
-    contribution: ['Contributed to backend features supporting the monitoring functionality.'],
-    implementation: ['Backend endpoints and data handling for monitoring features.'],
-    challenges: [],
-    outcomes: ['Backend contributions integrated into the team project.'],
-    screenshots: ['/documentation/ptpn-documentation.webp'],
-  },
-  {
     slug: 'mahad-abu-darda',
-    index: '07',
+    index: '06',
     title: "Website Ma'had Abu Ad Darda'",
     category: 'Web Development · Community Service (PKM)',
+    tier: 'web',
     summary:
-      'Official school website and online admission system developed during PKM Politeknik Caltex Riau, registered under Kemenkumham RI Copyright (HKI No. 000792817).',
+      'Official school web portal and online student admission system with Role-Based Access Control (RBAC), registered under Kemenkumham RI Copyright (HKI No. 000792817).',
     role: 'Backend Developer',
     stack: ['PHP', 'Laravel', 'MySQL', 'Bootstrap', 'RBAC'],
     context: 'PKM Politeknik Caltex Riau · Hak Cipta Kemenkumham',
@@ -449,5 +485,144 @@ export const projects: Project[] = [
       'Officially registered with Hak Cipta Program Komputer from Kemenkumham RI (No. 000792817).',
     ],
     screenshots: ['/projects/mahadabudarda.jpeg', '/certs/thumbs/HakCipta-Mahad.png'],
+  },
+  {
+    slug: 'spacemap',
+    index: '07',
+    title: 'SpaceMap',
+    category: 'Website Reengineering · BRIN',
+    tier: 'web',
+    summary:
+      'Reengineered the SPACeMAP satellite remote sensing portal at BRIN, migrating architecture from Bootstrap 4 to Bootstrap 5 and aligning UI components with BRIN corporate standards.',
+    role: 'Frontend Developer (Intern)',
+    stack: ['HTML', 'CSS', 'JavaScript', 'Bootstrap 4/5'],
+    context: 'BRIN internship',
+    accent: '#3B6FD9',
+    overview: 'SpaceMap is an information website for a BRIN application. The goal was to modernize it without losing content.',
+    problem: 'The site relied on Bootstrap 4 with an outdated interface, making maintenance and responsiveness harder.',
+    contribution: [
+      'Audited existing pages and components.',
+      'Migrated markup and utilities from Bootstrap 4 to Bootstrap 5.',
+      'Updated the visual interface for a cleaner, more consistent look.',
+    ],
+    implementation: [
+      'Replaced deprecated Bootstrap 4 classes and jQuery-dependent components.',
+      'Restructured layouts using Bootstrap 5 grid and utilities.',
+    ],
+    challenges: [
+      {
+        challenge: 'Breaking changes between Bootstrap versions.',
+        solution: 'Migrated page by page and verified each layout across breakpoints.',
+      },
+    ],
+    outcomes: ['Website running on Bootstrap 5 with an updated interface.'],
+    screenshots: ['/projects/spacemap.png', '/documentation/brin-docs-2.webp', '/documentation/brin-docs.webp'],
+  },
+  {
+    slug: 'akomodasi-ptpn',
+    index: '08',
+    title: 'Online Accommodation System',
+    category: 'Feature Development · PTPN',
+    tier: 'web',
+    summary:
+      'Engineered the interactive Meeting Calculator module for automated budget estimation and approval workflows within PTPN IV’s enterprise accommodation platform.',
+    role: 'Software Developer (Intern)',
+    stack: ['Laravel', 'PHP', 'Bootstrap 5'],
+    context: 'PTPN internship',
+    accent: '#C2410C',
+    overview: 'An internal system for managing official-trip accommodation requests at PTPN.',
+    problem: 'Meeting cost estimates were calculated manually before approval, slowing the process.',
+    contribution: [
+      'Developed the Meeting Calculator feature.',
+      'Implemented the cost estimation logic and approval flow integration.',
+    ],
+    implementation: ['Laravel controllers and Blade views styled with Bootstrap 5.'],
+    challenges: [
+      {
+        challenge: 'Fitting a new feature into an existing codebase.',
+        solution: 'Followed existing conventions and reused established components.',
+      },
+    ],
+    outcomes: ['Meeting Calculator feature delivered into the system.'],
+    screenshots: ['/projects/akomodasi-rapat.png'],
+  },
+  {
+    slug: 'soil-monitoring',
+    index: '09',
+    title: 'Soil Fertility Monitoring',
+    category: 'Backend & GIS Platform · PTPN',
+    tier: 'web',
+    summary:
+      'Engineered backend endpoints, relational database schemas, and nutrient status processing logic for the AgriSmart Palm Oil GIS soil fertility monitoring dashboard at PTPN IV.',
+    role: 'Backend Developer (Intern)',
+    stack: ['PHP', 'MySQL', 'Backend API', 'Relational Database'],
+    context: 'PTPN internship',
+    accent: '#4D7C0F',
+    overview: 'A web platform to support monitoring of soil fertility data in plantation areas.',
+    problem: 'Soil fertility data needed a structured system for recording and monitoring.',
+    contribution: ['Contributed to backend features supporting the monitoring functionality.'],
+    implementation: ['Backend endpoints and data handling for monitoring features.'],
+    challenges: [],
+    outcomes: ['Backend contributions integrated into the team project.'],
+    screenshots: ['/projects/kesuburan-tanah.png', '/documentation/ptpn-documentation.webp'],
+  },
+  {
+    slug: 'landsat-downloader',
+    index: '10',
+    title: 'Landsat Scene Downloader',
+    category: 'Desktop Application · BRIN',
+    tier: 'other',
+    summary:
+      'Python desktop automation app integrating the USGS M2M API with multi-threaded background workers to search and batch-download Landsat 8–9 Collection 2 Level-1 imagery by Path/Row.',
+    role: 'Software Developer (Intern)',
+    stack: ['Python', 'Tkinter', 'CustomTkinter', 'USGS M2M API'],
+    context: 'BRIN internship',
+    accent: '#7A5AF8',
+    overview: 'A desktop tool that streamlines finding and downloading Landsat scenes for researchers.',
+    problem: 'Searching and downloading scenes through the web portal one by one was repetitive and slow.',
+    contribution: [
+      'Built the GUI with Tkinter and CustomTkinter.',
+      'Integrated USGS M2M API authentication, scene search and download requests.',
+      'Collaborated with the team on requirements and testing.',
+    ],
+    implementation: [
+      'Path/Row and date based scene search for Landsat 8–9 Collection 2 Level-1.',
+      'API calls handled off the UI thread to keep the interface responsive.',
+    ],
+    challenges: [
+      {
+        challenge: 'Long-running downloads freezing the GUI.',
+        solution: 'Moved network work to background threads with progress feedback.',
+      },
+    ],
+    outcomes: ['Working desktop app used to search and download Landsat scenes.'],
+    screenshots: ['/projects/guilandsat.png'],
+  },
+];
+
+export const stats = [
+  {
+    index: '01',
+    value: '3.70',
+    label: 'GPA',
+    note: 'Informatics Engineering',
+  },
+  {
+    index: '02',
+    value: String(certifications.length),
+    label: 'Certifications',
+    note: 'Professional & Technical Certifications',
+  },
+  {
+    index: '03',
+    value: String(projects.length),
+    label: 'Projects',
+    note: 'Software & AI/ML Projects',
+  },
+  {
+    index: '04',
+    value: certifications.some((c) => c.title.includes('BNSP') && c.file) ? 'Certified' : 'Verified',
+    label: 'BNSP',
+    note: 'Professional Certification',
   },
 ];

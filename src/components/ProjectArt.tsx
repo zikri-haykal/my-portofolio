@@ -69,16 +69,16 @@ export function ProjectArt({ project, priority = false }: ProjectArtProps) {
     );
   }
 
-  // Architectural / Technical presentation for internal backend systems (Soil Monitoring)
+  // Architectural / Technical presentation when screenshots are not yet attached
   return (
     <div className="project-art project-art--backend" aria-label={`${project.title} technical architecture overview`}>
       <div className="backend-card-inner">
         <div className="backend-header">
           <div className="backend-badge">
             <Server size={13} />
-            <span>Backend Architecture</span>
+            <span>{project.category.split('·')[0].trim()}</span>
           </div>
-          <span className="mono">{project.context ?? 'Internal Service'}</span>
+          <span className="mono">{project.context ?? 'Technical Architecture'}</span>
         </div>
 
         <div className="backend-body">
@@ -86,7 +86,7 @@ export function ProjectArt({ project, priority = false }: ProjectArtProps) {
             <Database size={28} />
           </div>
           <div className="backend-title">{project.title}</div>
-          <p className="backend-sub">Data ingestion endpoints, relational schema design &amp; monitoring logic</p>
+          <p className="backend-sub">{project.summary}</p>
           <div className="backend-tech-row">
             {project.stack.map((t) => (
               <span key={t} className="backend-tech-pill">{t}</span>
@@ -95,7 +95,7 @@ export function ProjectArt({ project, priority = false }: ProjectArtProps) {
         </div>
 
         <div className="backend-footer">
-          <span className="mono">PT Perkebunan Nusantara IV · Confidential Internal Platform</span>
+          <span className="mono">{project.category} · {project.role}</span>
         </div>
       </div>
     </div>
